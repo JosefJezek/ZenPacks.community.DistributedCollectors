@@ -26,6 +26,9 @@ then
 fi
 cat $ZENHOME/etc/daemons.txt | while read f
 do
+    if [ $f == "zredis" ]; then
+        continue
+    fi
     echo "Update $f configuration"
     if [ -f $ZENHOME/etc/$f.conf ]
     then
