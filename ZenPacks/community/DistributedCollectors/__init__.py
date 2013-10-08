@@ -303,7 +303,7 @@ from Products.ZenModel.ZenMenu import ZenMenu
 
 class ZenPack(ZenPackBase):
     def install(self, app):
-        self.replaceString(zenPath('bin/zenoss'),'	#C="$C zenrender"','	C="$C zenrender"')
+        self.replaceString(zenPath('bin/zenoss'),'    #C="$C zenrender"','        C="$C zenrender"')
         if os.path.exists(zenPath('etc/DAEMONS_TXT_ONLY')) and os.path.exists(zenPath('etc/daemons.txt')):
             self.replaceString(zenPath('etc/daemons.txt'),'','zenrender')
         ZenPackBase.install(self, app)
@@ -314,7 +314,7 @@ class ZenPack(ZenPackBase):
         self.installMenuItems(app.zport.dmd)
 
     def remove(self, app, leaveObjects=False):
-        self.replaceString(zenPath('bin/zenoss'),'	C="$C zenrender"','	#C="$C zenrender"')
+        self.replaceString(zenPath('bin/zenoss'),'        C="$C zenrender"','    #C="$C zenrender"')
         if os.path.exists(zenPath('etc/DAEMONS_TXT_ONLY')) and os.path.exists(zenPath('etc/daemons.txt')):
             self.replaceString(zenPath('etc/daemons.txt'),'zenrender','')
         self.removeMenuItems(app.zport.dmd)
